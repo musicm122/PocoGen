@@ -51,7 +51,7 @@ let formatTypeName(dataType:string):string =
             let rest = item.Substring(1)
             first+rest
 
-    let replaceUnderscoreWithCapitalLetters(item:string) =
+    let replaceUnderscoreWithCapitalLetters(item:string) :string=
         match item with
         | s when String.IsNullOrWhiteSpace(s) -> item
         | _ ->
@@ -68,7 +68,7 @@ let formatTypeName(dataType:string):string =
         |> replaceUnderscoreWithCapitalLetters
 
 
-let buildClass (className:string) (dataRows:DataRow[]) =
+let buildClass (className:string) (dataRows:DataRow[]) :string =
 
     let buildProperty(row:DataRow) : propertyValues=
         let typeNameDetails = row.["DataType"] |> string
