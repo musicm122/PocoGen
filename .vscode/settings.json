@@ -1,0 +1,4 @@
+{
+    "FSharp.logLanguageServiceRequestsOutputWindowLevel": "DEBUG",
+    "FSharp.logLanguageServiceRequests": "both"
+}

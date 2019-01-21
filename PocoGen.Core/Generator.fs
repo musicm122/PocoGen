@@ -1,4 +1,4 @@
-﻿module Generator
+﻿module PocoGen.Core.Generator
 
 open System.Collections.Generic
 open System

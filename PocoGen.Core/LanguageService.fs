@@ -1,6 +1,6 @@
-﻿module LanguageService
+﻿module PocoGen.Core.LanguageService
 
-open Models
+open PocoGen.Core.Models
 
 type BuildClass = string ->RawRowData[] -> ClassObject
 type CreateClass = Query -> string -> ClassResult
