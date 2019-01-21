@@ -8,6 +8,7 @@ open PocoGen
 open System.Windows
 open System.Security.Policy
 open PocoGen.Core.Models
+open PocoGen.Core.Services
 
 type Model =
   { OutputLocation: FileOutputPath
@@ -16,7 +17,7 @@ type Model =
     Tables: Table list
     SelectedDatabase: Database option
     SelectedLanguage: Language
-    SelectedTables:Table list option }
+    SelectedTables:Table list }
 
 let init () =
   { OutputLocation = @"c:\"
@@ -25,7 +26,7 @@ let init () =
     Tables=[]
     SelectedDatabase = None
     SelectedLanguage = Language.CSharp
-    SelectedTables = None }
+    SelectedTables = [] }
 
 type Msg =
   | SetSelectedDatabase of Database option
@@ -46,26 +47,26 @@ let update msg m =
 
 
 let hasADatabaseSelected(m:Model) =
-    match Option.isSome m.SelectedDatabase with
-    | true -> Ok
-    | false -> Error
+    match m.SelectedDatabase.IsSome with
+    | true -> Ok m
+    | false -> Error "Selected database is required"
 
 let hasAtLeastOneTableSelected(m:Model) =
-    let resolved =
-        match m.SelectedTables with
-        | Some -> Option.get m.SelectedTables
-        | None -> []
+    match m.SelectedTables |> List.isEmpty with
+    | true -> Ok m
+    | _ -> Error "At least one table is required"
 
-    let isEmpty = resolved |> List.isEmpty
 
-    match Some m.SelectedTables |> List.isEmpty with
-    | [] -> Error
-    | _ -> Ok
+let hasValidOutputFolder(m:Model) =
+    match FileSystemService.IsValidPath m.OutputLocation with
+    | true -> Ok m
+    | _ -> Error "Invalid output path"
 
-let hasRequiredFields m:Model =
-    match model with
-    | m when
 
+let hasRequiredFields =
+    hasADatabaseSelected
+    >> Result.bind hasAtLeastOneTableSelected
+    >> Result.bind hasValidOutputFolder
 
 let bindings model dispatch =
   [

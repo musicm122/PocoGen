@@ -36,12 +36,13 @@ let runConnectionTest(model:Model):Model =
 
 let update (msg:Msg) (m:Model) =
   match msg with
+  | SetConnectionString conStringVal ->
+        { m with ConnectionString = conStringVal }
+  | SetOutput output -> {m with Output = output}
   | TestConnection con ->
         let testResult = runConnectionTest m
         let out = { m with Output = m.Output + String.Format("{0}\r\n{1}", m.Output, testResult) }
         out
-  | SetConnectionString conStringVal ->
-        { m with ConnectionString = conStringVal }
 
 let bindings model dispatch =
   [

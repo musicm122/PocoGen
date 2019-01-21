@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Include="Models.fs" />
+    <Compile Include="FileSystemServie.fs" />
     <Compile Include="LogInfo.fs" />
     <Compile Include="LanguageService.fs" />
     <Compile Include="DbService.fs" />
