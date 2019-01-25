@@ -14,7 +14,7 @@ open System.Windows
 let main argv =
     let window = App.initWindow
     window.Loaded.Add windowLoaded
-    Program.mkSimple Connection.init Connection.update Connection.bindings
+    Program.mkSimple App.init App.update App.v
     |> fun p -> { p with onError = elmishErrorHandler }
     |> Program.withConsoleTrace
     |> Program.runWindowWithConfig
