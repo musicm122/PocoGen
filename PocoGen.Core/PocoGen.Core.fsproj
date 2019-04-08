@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Models.fs" />
+    <Compile Include="FileSystemServie.fs" />
+    <Compile Include="LogInfo.fs" />
+    <Compile Include="LanguageService.fs" />
+    <Compile Include="DbService.fs" />
+    <Compile Include="CsharpFormatting.fs" />
+    <Compile Include="DataAccess.fs" />
+    <Compile Include="Generator.fs" />
+    <Compile Include="CompositionRoot.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.5.4" />
+  </ItemGroup>
+
+</Project>

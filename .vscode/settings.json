@@ -1,0 +1,5 @@
+{
+    "FSharp.logLanguageServiceRequestsOutputWindowLevel": "DEBUG",
+    "FSharp.logLanguageServiceRequests": "both",
+    "FSharp.fsacRuntime": "netcore"
+}
